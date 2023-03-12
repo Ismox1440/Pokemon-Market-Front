@@ -10,7 +10,7 @@ Este es un boilerplate personalizado que incluye configuración inicial para Vit
 Para utilizar este boilerplate en tu proyecto, puedes clonar este repositorio y modificarlo según tus necesidades. Puedes seguir estos pasos para clonar y utilizar este boilerplate:
 
 1. Clona este repositorio en tu máquina local.
-`git clone https://github.com/ismox1440/boilerplate-react-ts-redux-toolkit.git`
+`git clone https://github.com/Ismox1440/vite-boilerplate.git`
 
 2. Entra al directorio del proyecto.
 `cd boilerplate-react-ts-redux-toolkit`
