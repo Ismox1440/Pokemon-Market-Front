@@ -1,0 +1,1 @@
+export const borderGray = 'border-2 border-gray-700 hover:border-gray-500'

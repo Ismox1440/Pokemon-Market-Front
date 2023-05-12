@@ -2,3 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+@font-face {
+    font-family: 'Genshin-Regular';
+    src: url('./assets/fonts/genshin.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Spiegel-Regular';
+    src: url('./assets/fonts/SpiegelSans-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Genshin-Bold';
+    src: url('./assets/fonts/genshin.ttf');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Spiegel-Bold';
+    src: url('./assets/fonts/SpiegelSans-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+  }
+
