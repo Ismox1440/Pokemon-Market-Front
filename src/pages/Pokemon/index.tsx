@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import usePokemon from '../../hooks/usePokemonDetail';
-import PokemonCard from '../Home/components/PokemonCard';
-import CardBadge from '../Home/components/CardBadge';
+import PokemonCard from '@/components/CardPokemon';
+import CardBadge from '@/components/CardPokemon/Badge';
 import {
   IconDefinition,
   faBolt,
@@ -92,7 +92,6 @@ const Pokemon = () => {
   const { data: pokemon, isLoading, error } = usePokemon({ _id });
   const [loadingBuy, setLoadingBuy] = useState(false);
   const { user } = useUser();
-  console.log(user)
   if (isLoading) return <LoadingScreen />;
   const getCreationDate = (date: Date) => {
     date = new Date(date);

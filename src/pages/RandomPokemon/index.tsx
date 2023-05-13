@@ -1,8 +1,8 @@
 import { Sidebar } from '../../components/Sidebar';
-import PokemonCardLoading from '../Home/components/PokemonCardLoading';
+import PokemonCardLoading from '@/components/CardPokemon/Loading';
 import useUser from '../../hooks/useUser';
 import usePokeball from '../../hooks/usePokeball';
-import PokemonCard from '../Home/components/PokemonCard';
+import PokemonCard from '@/components/CardPokemon';
 import PokeballMenu from './componentes/PokeballMenu';
 
 const RandomPokemon = () => {

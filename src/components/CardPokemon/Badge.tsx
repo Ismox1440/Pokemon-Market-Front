@@ -1,5 +1,5 @@
-import { textColors } from '../../../config/pokemonColors';
-import { nameandurl } from '../../../types/pokemon';
+import { textColors } from '@/config/pokemonColors';
+import { nameandurl } from '@/types/pokemon';
 
 const CardBadge = ({pokemonTypes, id }: {pokemonTypes: nameandurl[], id: string | number}) => {
   return (
@@ -8,7 +8,7 @@ const CardBadge = ({pokemonTypes, id }: {pokemonTypes: nameandurl[], id: string 
         <img
           width='15'
           src={`https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${pokemonTypes[0].name}.svg`}
-          alt=''
+          alt='pokemon type'
           className='w-[15px] h-[15px]'
         />
       </span>
@@ -16,7 +16,7 @@ const CardBadge = ({pokemonTypes, id }: {pokemonTypes: nameandurl[], id: string 
         <img
           width='15'
           src={`https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${pokemonTypes[1].name}.svg`}
-          alt=''
+          alt='pokemon type'
           className='w-[15px] h-[15px]'
         />
       </span>}

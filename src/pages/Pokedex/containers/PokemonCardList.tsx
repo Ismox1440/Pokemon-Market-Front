@@ -1,4 +1,4 @@
-import PokemonCard from '../../Home/components/PokemonCard';
+import PokemonCard from '@/components/CardPokemon';
 import { IPokemon } from '../../../types/pokemon';
 import { PokedexPagination } from '../components';
 

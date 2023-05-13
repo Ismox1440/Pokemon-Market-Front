@@ -6,7 +6,6 @@ import useUser from '../../hooks/useUser';
 const Login = () => {
   const { loginWithPopup } = useAuth0();
   const {user} = useUser()
-  console.log(user)
   return (
     <div className='h-screen flex justify-center items-center'>
       <Button onClick={() => loginWithPopup()} variant='default'>

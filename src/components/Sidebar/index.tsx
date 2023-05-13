@@ -82,16 +82,16 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: 'Home', to:"/" },
-  { icon: IconBuildingStore, label: 'Market', to:"/market" },
+  { icon: IconHome2, label: 'Home', to: '/' },
+  { icon: IconBuildingStore, label: 'Market', to: '/market' },
   { icon: IconUser, label: 'Profile', to: '/userpokemons' },
-  { icon: IconEgg, label: 'Catch Pokemon', to:'/random' },
+  { icon: IconEgg, label: 'Catch Pokemon', to: '/random' },
   { icon: IconCalculator, label: 'Pokedex', to: '/pokedex' },
   { icon: IconGift, label: 'Daily Rewards', to: '/dailyrewards' },
 ];
 
 export function Sidebar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const links = mockdata.map((link, index) => (
     <NavbarLink
@@ -99,15 +99,14 @@ export function Sidebar() {
       key={link.label}
       active={link.to === window.location.pathname}
       onClick={() => {
-       
-        navigate(link.to)
+        navigate(link.to);
       }}
     />
   ));
 
   return (
     <Navbar
-      className=' fixed top-0 left-0'
+      className='fixed top-0 bottom-0'
       height={'full'}
       width={{ base: 80 }}
       p='md'

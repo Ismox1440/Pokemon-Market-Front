@@ -10,7 +10,7 @@ import {
   rem,
 } from '@mantine/core';
 import { IPokemon } from '../../../types/pokemon';
-import PokemonCard from '../../Home/components/PokemonCard';
+import PokemonCard from '@/components/CardPokemon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 

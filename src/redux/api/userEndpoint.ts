@@ -1,33 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { baseURL } from '../../api/api';
+import { IUser } from '../../types/user';
 
-const api = createApi({
+export const userEnpoint = createApi({
+  tagTypes: ['User'],
+  reducerPath: 'userEnpoint',
+
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseURL}user`,
-    prepareHeaders: async headers => {
-      const { getAccessTokenSilently } = useAuth0();
-      const accessToken = await getAccessTokenSilently();
+    prepareHeaders: (headers, { getState }: { getState: Function }) => {
+      const accessToken = getState().accessToken;
       headers.set('Authorization', `Bearer ${accessToken}`);
       return headers;
     },
   }),
   endpoints: builder => ({
-
-    getUser: builder.mutation({
-        query: ({name,email, image }) => ({
-            url: '/login',
-            method: "POST",
-            body: {name, email, image}
-        })
-
-    })
-
-    // Definición de tus endpoints de consulta
-    // ...
+    getUser: builder.query<IUser, { name?: string; email?: string }>({
+      query: ({ name, email }) => {
+        if (!name || !email) throw new Error('Name and email are required');
+        return `/getuser/${email}?name=${name}`;
+      },
+      providesTags: ['User'],
+    }),
   }),
 });
 
-// Interceptor de solicitudes   
-export const { useGetUserMutation } = api;
-export default api;
+// Interceptor de solicitudes
+export const { useGetUserQuery, useLazyGetUserQuery } = userEnpoint;

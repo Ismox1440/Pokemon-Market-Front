@@ -1,4 +1,4 @@
-import PokemonCardLoading from '../../Home/components/PokemonCardLoading';
+import PokemonCardLoading from '@/components/CardPokemon/Loading';
 
 const LoadingCardList = () => {
   const newArr = new Array(10).fill(0);

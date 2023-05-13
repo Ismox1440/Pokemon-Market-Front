@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuth, setUser } from './redux/slices/authSlice';
 
-const AuthMiddleware = ({ children }: {children:  JSX.Element}) => {
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+const AuthMiddleware = ({ children }: { children: JSX.Element }) => {
+  const {
+    isAuthenticated,
+    isLoading,
+    loginWithRedirect,
+    user,
+    getAccessTokenSilently,
+  } = useAuth0();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user: userAuth } = useSelector(selectAuth);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -16,16 +26,20 @@ const AuthMiddleware = ({ children }: {children:  JSX.Element}) => {
     checkAuth();
   }, [isAuthenticated, isLoading, loginWithRedirect]);
 
+  const setUserAction = async () => {
+    const accessToken = await getAccessTokenSilently();
+    dispatch(setUser({ user, accessToken }));
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
-      // El usuario está autenticado, continuar con la renderización de las rutas
+      setUserAction();
     } else if (!isAuthenticated && !isLoading) {
-      // El usuario no está autenticado, redirigir a la página de login
       navigate('/login');
     }
   }, [isAuthenticated, isLoading, navigate]);
 
-  return <>{children}</>;
+  return <>{userAuth && children}</>;
 };
 
 export default AuthMiddleware;

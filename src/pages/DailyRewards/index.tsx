@@ -5,7 +5,6 @@ import useUser from '../../hooks/useUser';
 
 const DailyRewards = () => {
   const {user} = useUser()
-  console.log(user, '3################')
   if(!user) return
   return (
     <div className='flex h-screen'>

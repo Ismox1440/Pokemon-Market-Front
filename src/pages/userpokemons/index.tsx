@@ -2,7 +2,7 @@ import React from 'react';
 import { Sidebar } from '../../components/Sidebar';
 import useUserPokemons from '../../hooks/useUserPokemons';
 import { useAuth0 } from '@auth0/auth0-react';
-import PokemonList from '../Home/containers/PokemonList';
+import PokemonList from '../../components/containers/PokemonList';
 import PokemonCardList from '../Pokedex/containers/PokemonCardList';
 import { Link, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
@@ -20,15 +20,15 @@ import {
   rem,
   useMantineTheme,
 } from '@mantine/core';
-import PokemonRaritiesProgress from '../Home/components/PokemonRaritiesProgress';
+import PokemonRaritiesProgress from './components/PokemonRaritiesProgress';
 import PokemonCarousel from './components/PokemonCarousel';
-import PokemonCardStats from '../Home/components/CardStats';
+import PokemonCardStats from '@/components/CardPokemon/Stats';
 const PRIMARY_COL_HEIGHT = rem(300);
 
 const UserPokemons = () => {
   const theme = useMantineTheme();
-  const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - ${theme.spacing.md} / 2)`;
   const { user } = useUser();
+  console.log(user)
   const { data } = useUserPokemons();
   if (!user?._id) return;
   return (

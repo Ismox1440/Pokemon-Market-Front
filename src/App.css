@@ -1,45 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;0,900;1,900&display=swap');
 
 .scrollbar::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  .scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(128, 128, 128, 0.1);
-    border-radius: 4px;
-  }
-  
-  .scrollbar::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0);
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: rgb(64, 57, 57);
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(136, 136, 136);
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  .card:after {
-    opacity: 1;
-    background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
-      url(https://assets.codepen.io/13471/holo.png), 
-      linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
-    background-position: 50% 50%;
-    background-size: 160%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    transition: all .33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: .75;
-  }
+  width: 5px;
+}
 
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(64, 57, 57);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(136, 136, 136);
+  border-radius: 4px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
 
 body {
-  font-family: "Genshin-Regular";
+  font-family: 'Genshin-Regular';
+
 }

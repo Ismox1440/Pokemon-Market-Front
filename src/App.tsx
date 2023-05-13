@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import Pokemon from './pages/Pokemon';
 import Pokedex from './pages/Pokedex';
 import RandomPokemon from './pages/RandomPokemon';
@@ -9,10 +8,12 @@ import { Toaster } from 'sonner';
 import UserPokemons from './pages/userpokemons';
 import Market from './pages/Market';
 import AuthMiddleware from './middleware';
+import Home from './pages/Home';
+
 
 function App() {
   return (
-    <div className='h-screen bg-gray-900'>
+   <>
       <Toaster />
       <BrowserRouter>
         <AuthMiddleware>
@@ -28,7 +29,7 @@ function App() {
           </Routes>
         </AuthMiddleware>
       </BrowserRouter>
-    </div>
+   </>
   );
 }
 

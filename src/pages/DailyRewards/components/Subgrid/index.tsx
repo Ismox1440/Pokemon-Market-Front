@@ -57,7 +57,6 @@ export function Subgrid({ user }) {
       mutate('http://localhost:5000/user/login')
     }
   };
-  console.log(user, 'user');
   return (
     <Container className='max-w-[80%]' my='md'>
       <SimpleGrid cols={4}>
