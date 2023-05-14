@@ -29,7 +29,7 @@
 }
 
 html {
-  background-color: #111;
+  background-color: #2d3340;
 }
 
 .bgWithShadow:after {
@@ -38,10 +38,10 @@ html {
     left top,
     left bottom,
     from(rgba(50, 57, 71, 0)),
-    to(#111)
+    to(#2d3340)
   );
-  background: -o-linear-gradient(top, rgba(50, 57, 71, 0) 0, #111 100%);
-  background: linear-gradient(180deg, rgba(50, 57, 71, 0), #111);
+  background: -o-linear-gradient(top, rgba(50, 57, 71, 0) 0, #2d3340 100%);
+  background: linear-gradient(180deg, rgba(50, 57, 71, 0), #2d3340);
   bottom: 0;
   content: '';
   height: 100%;

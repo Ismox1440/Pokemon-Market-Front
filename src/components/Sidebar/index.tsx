@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import {
   Navbar,
-  Center,
   Tooltip,
   UnstyledButton,
   createStyles,
@@ -10,22 +8,15 @@ import {
 } from '@mantine/core';
 import {
   IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
   IconUser,
-  IconSettings,
   IconLogout,
-  IconSwitchHorizontal,
   IconBuildingStore,
   IconEgg,
   IconCalculator,
   IconGift,
 } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
-import { faShop } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -40,12 +31,14 @@ const useStyles = createStyles(theme => ({
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
 
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[5]
-          : theme.colors.gray[0],
-    },
+        '&:hover': {
+          backgroundColor: theme.fn.variant({
+            variant: 'light',
+            color: theme.primaryColor,
+          }).background,
+          color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
+            .color,
+        },
   },
 
   active: {
@@ -70,7 +63,7 @@ interface NavbarLinkProps {
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles();
   return (
-    <Tooltip label={label} position='right' transitionProps={{ duration: 0 }}>
+    <Tooltip label={label} position='right' transitionProps={{ duration: 100, transition: 'scale-x' }}>
       <UnstyledButton
         onClick={onClick}
         className={cx(classes.link, { [classes.active]: active })}
@@ -106,6 +99,7 @@ export function Sidebar() {
 
   return (
     <Navbar
+    withBorder={false}
       className='fixed top-0 bottom-0'
       height={'full'}
       width={{ base: 80 }}

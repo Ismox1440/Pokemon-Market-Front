@@ -14,7 +14,7 @@ const PokemonCard = ({
   const { types, images, name, stats } = pokemon;
   return (
     <Link to={`/pokemon/${pokemon?._id}`} className={classNames}>
-      <div className='w-[252px] h-[308px] bg-[#1c1f25] flex flex-col rounded-lg border-gray-700 transition-all duration-100 hover:border-[#31363f] border-2 overflow-hidden'>
+      <div className='w-[252px] h-[308px] bg-[#3A4254] flex flex-col rounded-lg border-gray-700 transition-all duration-100 hover:border-[#31363f]  overflow-hidden'>
         <div
           className={`bg-gradient-to-b from-transparent ${
             bgColors[types[0].name]
@@ -27,7 +27,7 @@ const PokemonCard = ({
             <div className='absolute inset-0 bg-[url("https://66.media.tumblr.com/c3d171f2c27802035772177cb2d8765a/tumblr_ola6bsBBNC1rt67t1o2_r2_400.gif")] rounded-lg shadow-lg opacity-[0.03]'></div>
           )}
 
-          <div className='absolute bg-gray-800 scale-90  rounded top-[10px]  items-center rounde    d inline-flex justify-center py-[4px] px-[8px] whitespace-nowrap'>
+          <div className='absolute  scale-90  rounded top-[10px]  items-center rounde    d inline-flex justify-center py-[4px] px-[8px] whitespace-nowrap'>
             <CardBadge pokemonTypes={types} id={pokemon._id} />
           </div>
           <div className='mt-[40px] '>

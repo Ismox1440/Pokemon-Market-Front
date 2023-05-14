@@ -28,7 +28,6 @@ const PRIMARY_COL_HEIGHT = rem(300);
 const UserPokemons = () => {
   const theme = useMantineTheme();
   const { user } = useUser();
-  console.log(user)
   const { data } = useUserPokemons();
   if (!user?._id) return;
   return (

@@ -1,9 +1,13 @@
-import React from 'react';
+import { backgroundPages } from '@/config/backgrounds';
+import { useLocation } from 'react-router-dom';
 
-const Background = ({image}: {image: string}) => {
-    const bgUrl = `bg-[url("${image}")]`
+const Background = () => {
+  const path = useLocation();
+  const bg = backgroundPages[path.pathname as keyof typeof backgroundPages];
   return (
-    <div className={`bgWithShadow ${bgUrl} bg-cover h-[66.6vh] left-0 opacity-[0.2] pointer-events-none absolute w-screen top-0 -z-1`}></div>
+    <div
+      className={`bgWithShadow ${bg} bg-cover  h-[66.6vh] left-0 opacity-[0.2] pointer-events-none fixed w-screen top-0 -z-1`}
+    ></div>
   );
 };
 

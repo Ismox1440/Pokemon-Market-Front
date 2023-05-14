@@ -1,16 +1,10 @@
 import Background from '../Background';
 import { Sidebar } from '../Sidebar';
 
-const MainLayout = ({
-  children,
-  backgroundImage,
-}: {
-  children: React.ReactNode;
-  backgroundImage?: string;
-}) => {
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='bg-gray-900 h-full'>
-      {backgroundImage && <Background image={backgroundImage} />}
+    <div className='h-full'>
+      <Background />
       <Sidebar />
       <div className='ml-[80px]'>{children}</div>
     </div>

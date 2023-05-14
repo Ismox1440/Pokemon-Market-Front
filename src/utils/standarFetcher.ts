@@ -1,6 +1,4 @@
 export const standarFetcher = async (url: string) => {
-    console.log('%c Url ', 'background: #000; color: #fff', url);
-
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Something went wrong');

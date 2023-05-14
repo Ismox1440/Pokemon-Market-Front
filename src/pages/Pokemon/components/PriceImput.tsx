@@ -67,7 +67,6 @@ function PriceImput({
 }: QuantityInputProps) {
   const { classes } = useStyles();
   const handlers = useRef<NumberInputHandlers>(null);
-  console.log(isLoading)
   return (
     <div className={classes.wrapper}>
       <ActionIcon<'button'>

@@ -20,8 +20,9 @@ const SearchInput = ({
   
   return (
     <form className='flex items-center justify-center' onSubmit={handleSubmit}>
-      <Input.Wrapper onSubmit={e => console.log(e)} id='search-input'>
+      <Input.Wrapper id='search-input'>
         <Input
+        
           onChange={e => setSearch(e.target.value)}
           value={search}
           placeholder='Search by name'

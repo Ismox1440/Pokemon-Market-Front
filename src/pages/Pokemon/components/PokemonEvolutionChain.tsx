@@ -27,7 +27,6 @@ const PokemonEvolutionChain = ({ speciesUrl }: { speciesUrl: string }) => {
   const evolutionChain = getEvolutionChain(evolution_chain.chain.evolves_to);
   const levelTwoEvolution = evolutionChain.filter(e => e.level === 2);
   const levelThreeEvolution = evolutionChain.filter(e => e.level === 3);
-  console.log(levelTwoEvolution, '2');
   return (
     <div className='mt-11'>
       <div className='flex items-center gap-1 mb-4 text-xl text-gray-400'>
@@ -78,7 +77,6 @@ const EvolutionCard = ({ speciesUrl }) => {
     data?.varieties[0].pokemon.url,
     fetcher
   );
-  console.log(pokemon, 'asd2');
   if (isLoading || loadingSpecies) return <PokemonCardLoading />;
   if (pokemon) return <PokemonCard pokemon={pokemon} />;
 };

@@ -4,7 +4,7 @@ import { ArticlesSection, UserSection } from './components';
 
 const Home = () => {
   return (
-    <MainLayout backgroundImage='https://images6.alphacoders.com/129/1295229.png'>
+    <MainLayout>
       <div className='mt-40 w-full'>
         <Container my='md' className='lg:max-w-full 2xl:max-w-[90%]'>
           <SimpleGrid

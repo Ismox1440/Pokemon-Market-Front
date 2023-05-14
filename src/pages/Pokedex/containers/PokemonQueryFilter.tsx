@@ -26,10 +26,10 @@ const PokemonQueryFilter = ({ customQuery }: { customQuery?: string }) => {
     location.search
   );
   return (
-    <div className=' bg-gray-900  mb-6'>
+    <div className='mb-6'>
       <div className='px-11 w-[90%] mx-auto  mt-11'>
-        <div className='flex items-center justify-center gap-4'>
-          <div className='flex gap-4'>
+        <div className='flex flex-col md:flex-row items-center justify-center gap-4'>
+          <div className='flex flex-col xl:flex-row gap-4'>
             <SelectType
               handleSelect={handleSelect}
               currentType={typeof type === 'string' ? type : null}
@@ -39,13 +39,10 @@ const PokemonQueryFilter = ({ customQuery }: { customQuery?: string }) => {
               currentRarity={typeof rarity === 'string' ? rarity : undefined}
             />
           </div>
-
           <SearchInput
             name={typeof name === 'string' ? name : ''}
-            handleSelect={handleSelect}
-          />
-
-          <div className='flex gap-4'>
+            handleSelect={handleSelect}/>
+          <div className='flex flex-col xl:flex-row gap-4'>
             <SelectSort
               currentSort={typeof sort === 'string' ? sort : null}
               handleSelect={handleSelect}
@@ -56,7 +53,7 @@ const PokemonQueryFilter = ({ customQuery }: { customQuery?: string }) => {
             />
           </div>
         </div>
-        <div className='flex mt-4 justify-center items-center'>
+        <div className='flex flex-col mt-4 justify-center items-center'>
           {location.search.length > 0 && (
             <Button
               onClick={() => {

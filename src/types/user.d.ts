@@ -1,3 +1,4 @@
+import { IItem } from "./item"
 import { IPokeball } from "./pokeball"
 import { IPokemon } from "./pokemon"
 
@@ -7,23 +8,21 @@ export interface IUser {
     image: string
     coins: number,
     pokemons: IPokemon[]
-    items: IItems[]
+    items: IUserItem[]
     lastGiftDate?: Date
     giftIndex?: number
-    pokeballs: userPokeball[]
+    pokeballs: IUserPokeball[]
     _id: string
 }
 
-
-type userPokeball = {
+interface IUserPokeball {
     count: number,
     pokeball: IPokeball
 }
 
 
-interface IItems {
-    name: string
-    count: number
-    image: string
-    description: string
+interface IUserItem {
+    count: number,
+    _id?: string
+    item: IItem
 }
