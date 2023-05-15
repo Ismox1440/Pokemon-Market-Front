@@ -43,7 +43,7 @@ export const addItem = (
       ],
     };
   }
-  userItem = user.items.find(userItem => userItem._id === item._id);
+  userItem = user.items.find(userItem => userItem.item._id === item._id);
   if (!userItem) {
     return { items: [...user.items, { _id: item._id, count, item }] } as {
       items: IUserItem[];

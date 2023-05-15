@@ -8,6 +8,9 @@ module.exports = {
       },
       colors: {
         'blue-opaque': 'rgb(13 42 148 / 18%)',
+        primary: '#2d3340',
+        secondary: '#3A4254',
+        title: '#D3BD8F',
         gray: {
           0: '#fff',
           100: '#fafafa',

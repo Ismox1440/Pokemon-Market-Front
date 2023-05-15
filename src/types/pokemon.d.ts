@@ -1,4 +1,7 @@
+import { IUser } from "./user";
+
 export interface IPokemon {
+  baseStats: IStats
   lastLovePotion: Date
   evolvesTo?: IPokemon[]
   createdDate?: Date;
@@ -29,11 +32,12 @@ export interface IPokemon {
   color?: nameandurl;
   eggGroup?: string[];
   minLevelToEvolve?: number;
-  growthRate?: IGrowthRate;
+  growthRate: IGrowthRate;
   generation: string;
   isShiny?: boolean;
   isEgg?: boolean;
   _id: string
+  owner?: IUser
 }
 
 interface IStats {

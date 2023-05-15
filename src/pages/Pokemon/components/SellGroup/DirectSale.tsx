@@ -1,18 +1,17 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Group, Button } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSitemap } from '@fortawesome/free-solid-svg-icons';
-import useSellPokemon from '../../../hooks/useSellPokemon';
-import { IPokemon } from '../../../types/pokemon';
-import { sellPokemon } from '../../../services/sellPokemon';
+import { Modal, Group, Button, UnstyledButton } from '@mantine/core';
+import { IPokemon } from '@/types/pokemon';
+import { sellPokemon } from '@/services/sellPokemon';
 import { toast } from 'sonner';
-import useUser from '../../../hooks/useUser';
+import useUser from '@/hooks/useUser';
+import { useSellDirectPokemonMutation } from '@/redux/api/userEndpoint';
+import { IUser } from '@/types/user';
 
 const getDirectPrice = (pokemon: IPokemon) => {
   const { stats, isLegendary, isMythical } = pokemon;
   let price = 0;
   for (let stat in stats) {
-    price += stats[stat];
+    price += stats[stat as keyof typeof stats];
   }
   if (isLegendary) price *= 25;
   else if (isMythical) price *= 50;
@@ -20,16 +19,13 @@ const getDirectPrice = (pokemon: IPokemon) => {
   return Math.floor(price);
 };
 
-function DirectSale({ pokemon }: { pokemon: IPokemon }) {
-  const [opened, { open, close }] = useDisclosure(false);
-  const { user } = useUser();
+function DirectSale({ pokemon, user }: { pokemon: IPokemon, user: IUser }) {
+  const [opened, { open, close }] = useDisclosure(false); 
+  const [sell] = useSellDirectPokemonMutation();
   const handleSell = () => {
     close();
-    toast.promise(() => sellPokemon(pokemon._id, 'direct', user._id), {
-      loading: 'Loading...',
-      success: data => data,
-      error: err => err,
-    });
+    toast.success('Pokemon sold!');
+    sell({ pokemon, user, price: getDirectPrice(pokemon) * 2 });
   };
 
   return (
@@ -48,7 +44,7 @@ function DirectSale({ pokemon }: { pokemon: IPokemon }) {
             {getDirectPrice(pokemon)}
           </h3>
         </div>
-        <h2 className='text-md text-gray-300'>
+        <h2 style={{ fontFamily: 'Poppins' }} className='text-md text-gray-300'>
           The system will buy your Pokemon and you will receive the following
           coins immediately. Are you sure you want to sell your Pokemon?
         </h2>
@@ -63,14 +59,12 @@ function DirectSale({ pokemon }: { pokemon: IPokemon }) {
       </Modal>
 
       <Group position='center'>
-        <Button
-       
-          size='md'
-          leftIcon={<FontAwesomeIcon icon={faSitemap} />}
+        <UnstyledButton
+          className='hover:bg-[url("https://wiki.hoyolab.com/_nuxt/img/menu-active.0e4a5dd.png")] bg-no-repeat bg-contain bg-center  px-4 py-2 text-gray-200 text-lg'
           onClick={open}
         >
           Direct sale
-        </Button>
+        </UnstyledButton>
       </Group>
     </>
   );

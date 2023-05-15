@@ -7,7 +7,6 @@ import {
   rem,
 } from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons-react';
-import useLovePotion from '../../../hooks/pokemon/useLovePotion';
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -56,6 +55,7 @@ interface QuantityInputProps {
   max?: number;
   value: number | '';
   setValue: (value: number) => void;
+  isLoading?: boolean;
 }
 
 function PriceImput({

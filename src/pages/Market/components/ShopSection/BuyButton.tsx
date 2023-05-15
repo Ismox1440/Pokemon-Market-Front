@@ -1,5 +1,5 @@
 import useUser from '@/hooks/useUser';
-import PriceImput from '@/pages/Pokemon/components/PriceImput';
+import PriceImput from '@/pages/Pokemon/components/SellGroup/PriceImput';
 import { useBuyItemMutation } from '@/redux/api/userEndpoint';
 import { IItem } from '@/types/item';
 import { shortenQuantity } from '@/utils/userUtils';

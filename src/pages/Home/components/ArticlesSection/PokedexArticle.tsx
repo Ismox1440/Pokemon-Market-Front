@@ -4,10 +4,10 @@ const pokedexImage =
   'https://res.cloudinary.com/dlekwh1wn/image/upload/v1683135421/pokedex_s3wx4w.png';
 const PokedexArticle = () => {
   return (
-    <Link to='/dailyrewards'>
+    <Link to='/pokedex'>
       <article
         style={{ fontFamily: 'Genshin-Regular' }}
-        className='w-full relative z-10 border-2 py-4 xl:py-0 hover:border-gray-200 cursor-pointer border-gray-700 flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-red-500 to-red-900'
+        className='w-full relative z-10 border-2 py-4 xl:py-0 hover:border-gray-200 cursor-pointer border-secondary flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-red-500 to-red-900'
       >
         <img
           src={pokedexImage}

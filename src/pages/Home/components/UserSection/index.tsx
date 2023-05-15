@@ -9,7 +9,7 @@ const UserInfoSection = () => {
   const {user, isLoading} = useUser()
   if (!user || isLoading) return <UserInfoLoader />;
   return (
-    <section className='sm:bg-gray-900 bg-opacity-80 sm:backdrop-blur rounded-xl sm:border-2 border-gray-700'>
+    <section>
       <ScrollArea.Autosize mah={700}>
         <Header user={user} />
         <div className='p-[1rem] my-5 rounded-lg'>
