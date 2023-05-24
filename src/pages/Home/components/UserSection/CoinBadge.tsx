@@ -1,16 +1,14 @@
-import { shortenQuantity } from "@/utils/userUtils";
+import { shortenQuantity } from '@/utils/userUtils';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CoinBadge = ({coins}: {coins: number}) => {
+const CoinBadge = ({ coins }: { coins: number }) => {
   return (
-    <div className='flex items-center justify-center gap-1'>
-      <img
-        className='w-[32px]'
-        src='https://i.seadn.io/gae/f5jYkHL3Rp5IwFdrCgnubHGrLo45Z8JCIU8AlKMI6Bw59HxrcW93FYmex0Lh1if0jQsRCutywG2tBSXLoTGbveVrt_oLdR6Nq2UJ?auto=format&w=1000'
-        alt='coin'
-      />
+    <div className='flex items-center text-gray-200 font-semibold text-lg justify-center gap-1'>
+      <FontAwesomeIcon icon={faCoins} />
       <h3
-        className='text-gray-200 font-semibold text-lg'
-        style={{ fontFamily: 'Genshin-regular' }}
+        className=''
+        style={{ fontFamily: 'Poppins' }}
       >
         {shortenQuantity(coins)}
       </h3>

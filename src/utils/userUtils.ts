@@ -1,6 +1,4 @@
-import { IItem } from '@/types/item';
-import { IPokeball } from '@/types/pokeball';
-import { IUser, IUserItem, IUserPokeball } from '@/types/user';
+import { IUser, IUserItem, IUserPokeball, IItem, IPokeball } from '@/types';
 
 export const getPokeballsLength = (pokeballsArr: IUserPokeball[]) => {
   let total = 0;
@@ -26,7 +24,7 @@ export const addItem = (
   count: number
 ): { items: IUserItem[] } | { pokeballs: IUserPokeball[] } => {
   let userItem: IUserItem | IUserPokeball | undefined;
-  if (item.name.includes('ball')) {
+  if (item.name.toLowerCase().includes('ball')) {
     userItem = user.pokeballs.find(
       userItem => userItem.pokeball._id === item._id
     );
@@ -53,4 +51,11 @@ export const addItem = (
   return {
     items: [...newArr, { count: userItem.count + count, item }],
   } as { items: IUserItem[] };
+};
+
+export const convertHours = (hours: number) => {
+  if (hours > 24) {
+    return `${Math.floor(hours / 24)}d ${hours % 24}h`;
+  }
+  return `${hours}h`;
 };

@@ -1,24 +1,27 @@
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button, UnstyledButton } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHands } from '@fortawesome/free-solid-svg-icons';
 import PriceImput from './PriceImput';
-import { sellPokemon } from '../../../../services/sellPokemon';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { useSellP2PPokemonMutation } from '@/redux/api/userEndpoint';
 import { IPokemon } from '@/types/pokemon';
 import { IUser } from '@/types/user';
 
-function P2PMarketButton({ pokemon, user }: { pokemon: IPokemon, user: IUser, }) {
+function P2PMarketButton({
+  pokemon,
+  user,
+}: {
+  pokemon: IPokemon;
+  user: IUser;
+}) {
   const [opened, { open, close }] = useDisclosure(false);
-  const [sell] = useSellP2PPokemonMutation()
+  const [sell] = useSellP2PPokemonMutation();
   const [value, setValue] = useState<number | 0>(1);
 
   const handleSell = () => {
     close();
-    sell({pokemon, user, price: value})
-    toast.success(`Pokemon ${pokemon.name} put up for sale`)
+    sell({ pokemon, user, price: value });
+    toast.success(`Pokemon ${pokemon.name} put up for sale`);
   };
 
   return (
@@ -32,7 +35,7 @@ function P2PMarketButton({ pokemon, user }: { pokemon: IPokemon, user: IUser, })
           />
           <PriceImput max={50000000} value={value} setValue={setValue} />
         </div>
-        <h2 style={{fontFamily: "Poppins"}} className='text-md text-gray-300'>
+        <h2 style={{ fontFamily: 'Poppins' }} className='text-md text-gray-300'>
           Publish your Pokémon with a price and wait for someone to buy it to
           receive your Coins. While it's up for sale, you can't interact with
           it. Good luck!{' '}

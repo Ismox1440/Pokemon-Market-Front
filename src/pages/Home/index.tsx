@@ -10,7 +10,7 @@ const Home = () => {
           <SimpleGrid
             cols={2}
             spacing='md'
-            className='gap-11 lg:gap-[1rem] xl:gap-[4rem]'
+            className='gap-11 lg:gap-[1rem] xl:gap-[4rem] xl:min-h-[610px]'
             breakpoints={[{ maxWidth: 'lg', cols: 1 }]}
           >
             <UserSection />

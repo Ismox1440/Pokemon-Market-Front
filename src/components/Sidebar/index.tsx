@@ -1,3 +1,5 @@
+import useUser from '@/hooks/useUser';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Navbar,
   Tooltip,
@@ -14,6 +16,7 @@ import {
   IconEgg,
   IconCalculator,
   IconGift,
+  IconUsers,
 } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -74,17 +77,20 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   );
 }
 
-const mockdata = [
-  { icon: IconHome2, label: 'Home', to: '/' },
-  { icon: IconBuildingStore, label: 'Market', to: '/market' },
-  { icon: IconUser, label: 'Profile', to: '/userpokemons' },
-  { icon: IconEgg, label: 'Catch Pokemon', to: '/random' },
-  { icon: IconCalculator, label: 'Pokedex', to: '/pokedex' },
-  { icon: IconGift, label: 'Daily Rewards', to: '/dailyrewards' },
-];
+
 
 export function Sidebar() {
   const navigate = useNavigate();
+  const {user} = useUser()
+  const mockdata = [
+    { icon: IconHome2, label: 'Home', to: '/' },
+    { icon: IconBuildingStore, label: 'Market', to: '/market' },
+    { icon: IconUser, label: 'Profile', to: `/profile/${user?._id}` },
+    { icon: IconEgg, label: 'Catch Pokemon', to: '/catch' },
+    { icon: IconCalculator, label: 'Pokedex', to: '/pokedex' },
+    { icon: IconGift, label: 'Daily Rewards', to: '/dailyrewards' },
+    { icon: IconUsers, label: 'Top users', to: '/top' },
+  ];
 
   const links = mockdata.map((link, index) => (
     <NavbarLink
@@ -96,6 +102,7 @@ export function Sidebar() {
       }}
     />
   ));
+  const {logout} = useAuth0()
 
   return (
     <Navbar
@@ -112,7 +119,7 @@ export function Sidebar() {
       </Navbar.Section>
       <Navbar.Section>
         <Stack justify='center' spacing={0}>
-          <NavbarLink icon={IconLogout} label='Logout' />
+          <NavbarLink onClick={logout} icon={IconLogout} label='Logout' />
         </Stack>
       </Navbar.Section>
     </Navbar>

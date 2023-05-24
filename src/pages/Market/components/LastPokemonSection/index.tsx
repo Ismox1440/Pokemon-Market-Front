@@ -1,4 +1,4 @@
-import PokemonCarousel from '@/pages/userpokemons/components/PokemonCarousel';
+import PokemonCarousel from '@/pages/Profile/components/PokemonCarousel';
 import { useGetLastedPokemonForSaleQuery } from '@/redux/api/pokemonEndpoint';
 
 const LastPokemonSection = () => {

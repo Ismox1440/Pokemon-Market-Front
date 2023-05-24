@@ -6,6 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import BuyButton from './BuyButton';
 import { IItem } from '@/types/item';
 import { IPokeball } from '@/types/pokeball';
+import { Separator } from '@/components';
 
 interface IProps {
   item: combinedInterface;
@@ -19,7 +20,7 @@ const ShopItem = ({ item }: IProps) => {
   return (
     <>
       <Modal
-        zIndex={1000}
+        zIndex={10000}
         opened={opened}
         onClose={close}
         title={`Buy ${name}`}
@@ -31,14 +32,12 @@ const ShopItem = ({ item }: IProps) => {
         >
           {description}
         </span>
-        <img
-          src='https://wiki.hoyolab.com/_nuxt/img/home_module_line.bd7c04f.png'
-          className='mt-2'
-          alt='line'
-        />
-        <div>
-          <BuyButton item={item} itemType={catchRate ? 'pokeball' : 'item'} />
+        <div className='my-6'>
+        <Separator/>
+
         </div>
+
+        <BuyButton item={item} itemType={catchRate ? 'pokeball' : 'item'} />
       </Modal>
 
       <HoverCard closeDelay={0} width={300}>

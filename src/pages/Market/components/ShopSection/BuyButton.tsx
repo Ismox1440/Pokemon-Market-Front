@@ -5,6 +5,7 @@ import { IItem } from '@/types/item';
 import { shortenQuantity } from '@/utils/userUtils';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 const BuyButton = ({
   itemType,
@@ -13,7 +14,7 @@ const BuyButton = ({
   itemType: 'pokeball' | 'item';
   item: IItem;
 }) => {
-  const {price} = item
+  const { price } = item;
   const [value, setValue] = useState(1);
   const [buy] = useBuyItemMutation();
   const { user } = useUser();
@@ -25,6 +26,7 @@ const BuyButton = ({
       user,
       item,
     });
+    toast.success(`Successfully bought ${value} ${item.name}s`)
   };
   if (!user) return <div>Loading...</div>;
   return (

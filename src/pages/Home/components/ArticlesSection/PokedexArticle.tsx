@@ -7,7 +7,7 @@ const PokedexArticle = () => {
     <Link to='/pokedex'>
       <article
         style={{ fontFamily: 'Genshin-Regular' }}
-        className='w-full relative z-10 border-2 py-4 xl:py-0 hover:border-gray-200 cursor-pointer border-secondary flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-red-500 to-red-900'
+        className='w-full relative z-10 border-2 py-4 xl:py-0 hover:border-gray-500 transition-all cursor-pointer border-secondary flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-red-500 to-red-900'
       >
         <img
           src={pokedexImage}

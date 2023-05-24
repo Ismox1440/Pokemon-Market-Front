@@ -3,14 +3,15 @@ import { IPokeball } from "./pokeball"
 import { IPokemon } from "./pokemon"
 
 export interface IUser {
+    description: string
     username: string
     email: string
     image: string
     coins: number,
     pokemons: IPokemon[]
     items: IUserItem[]
-    lastGiftDate?: Date
-    giftIndex?: number
+    lastGiftDate: Date
+    giftIndex: number
     pokeballs: IUserPokeball[]
     _id: string
 }

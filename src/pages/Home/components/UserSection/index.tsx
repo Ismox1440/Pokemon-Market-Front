@@ -1,4 +1,4 @@
-import PokemonCard from '@/components/CardPokemon';
+import PokemonCard from '@/components/CardPokemon/CardPokemon';
 import { IPokemon } from '@/types/pokemon';
 import UserInfoLoader from './Loading';
 import Header from './Header';
@@ -6,7 +6,7 @@ import { ScrollArea } from '@mantine/core';
 import useUser from '@/hooks/useUser';
 
 const UserInfoSection = () => {
-  const {user, isLoading} = useUser()
+  const { user, isLoading } = useUser();
   if (!user || isLoading) return <UserInfoLoader />;
   return (
     <section>

@@ -1,17 +1,14 @@
 import { useBuyPokemonMutation } from '@/redux/api/userEndpoint';
-import { IPokemon } from '@/types/pokemon';
-import { IUser } from '@/types/user';
+import { IUser, IPokemon } from '@/types';
 import { faCartShopping, faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Avatar, Button } from '@mantine/core';
-import { toast } from 'sonner';
 
 const SaleArticle = ({ pokemon, user }: { pokemon: IPokemon; user: IUser }) => {
-  const { owner, price, onSale, name} = pokemon;
-  const [buyPokemon] = useBuyPokemonMutation()
+  const { owner, price, onSale, name } = pokemon;
+  const [buyPokemon, { isLoading }] = useBuyPokemonMutation();
   const handleBuy = async () => {
-    toast.success(`Pokemon ${name} bought`)
-    buyPokemon({pokemon, user})
+    buyPokemon({ pokemon, user });
   };
   return (
     <div className='bg-secondary  border-gray-700 rounded p-8 mt-11'>
@@ -24,7 +21,12 @@ const SaleArticle = ({ pokemon, user }: { pokemon: IPokemon; user: IUser }) => {
             <Avatar size='lg' radius='xl' src={owner?.image ?? ''} />
 
             <div className='flex mb-11 flex-col justify-start gap-1'>
-              <span style={{fontFamily: "Poppins"}} className='text-gray-400 font-bold text-lg'>Ismael Saragusti</span>
+              <span
+                style={{ fontFamily: 'Poppins' }}
+                className='text-gray-400 font-bold text-lg'
+              >
+                Ismael Saragusti
+              </span>
             </div>
           </div>
         </>
@@ -42,6 +44,7 @@ const SaleArticle = ({ pokemon, user }: { pokemon: IPokemon; user: IUser }) => {
           color='lime'
           leftIcon={<FontAwesomeIcon icon={faCartShopping} />}
           onClick={handleBuy}
+          loading={isLoading}
           disabled={
             !onSale || !price || price > user.coins || owner?._id === user._id
           }

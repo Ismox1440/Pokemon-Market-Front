@@ -8,7 +8,7 @@ const DailyRewardArticle = () => {
     <Link to='/dailyrewards'>
       <article
         style={{ fontFamily: 'Genshin-Regular' }}
-        className='w-full relative z-10 border-2 hover:border-gray-200 cursor-pointer border-secondary flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-[#FDD89A] to-[#8A645F]'
+        className='w-full relative z-10 border-2 hover:border-gray-500 transition-all cursor-pointer border-secondary flex items-center justify-center flex-col rounded-2xl h-full bg-gradient-to-b from-[#FDD89A] to-[#8A645F]'
       >
         <img
           src={pokemonCoinImage}

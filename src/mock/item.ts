@@ -1,4 +1,4 @@
-import { IItem } from '@/types/item';
+import { IItem } from '@/types';
 
 export const lovePotion: IItem = {
   name: 'Love Potion',

@@ -15,7 +15,7 @@ const Header = ({ user }: { user: IUser }) => {
         >
           Welcome {user.username}
         </h2>
-        <div className='flex flex-wrap gap-6'>
+        <div className='flex flex-wrap gap-4'>
           <CoinBadge coins={user.coins} />
           <PokeballBadge pokeballs={getPokeballsLength(user.pokeballs ?? [])} />
         </div>

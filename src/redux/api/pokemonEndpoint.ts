@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseURL } from '../../api/api';
-import { IPokemon } from '@/types/pokemon';
+import { baseURL } from '@/api/api';
 import { toast } from 'sonner';
-import { userEnpoint } from './userEndpoint';
-import { IItem } from '@/types/item';
+import { userEndpoint } from './userEndpoint';
+import { IItem, IPokemon } from '@/types';
 import { lovePotion } from '@/mock/item';
 
 export const pokemonEndpoint = createApi({
@@ -13,7 +12,7 @@ export const pokemonEndpoint = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseURL}pokemon`,
     prepareHeaders: (headers, { getState }: { getState: Function }) => {
-      const accessToken = getState().accessToken;
+      const accessToken = getState().authSlice.accessToken;
       headers.set('Authorization', `Bearer ${accessToken}`);
       return headers;
     },
@@ -31,7 +30,7 @@ export const pokemonEndpoint = createApi({
     claimLovePotion: builder.mutation({
       query: ({ user, pokemon, count }) => ({
         url: `/${pokemon._id}/claim-lovepotion`,
-        method: 'POST',
+        method: 'PUT',
         body: { user_id: user._id },
       }),
       onQueryStarted: async (
@@ -43,28 +42,30 @@ export const pokemonEndpoint = createApi({
             'getPokemon',
             pokemon._id,
             oldData => {
-              const newDataLove = new Date()
+              const newDataLove = new Date();
               return {
                 ...oldData,
-                lastLovePotion: newDataLove
+                lastLovePotion: newDataLove,
               };
             }
           )
         );
-    
 
         const pathUser = dispatch(
-          userEnpoint.util.updateQueryData(
+          userEndpoint.util.updateQueryData(
             'getUser',
-            { name: user.username, email: user.email },
+            { email: user.email },
             oldData => {
-              const userPotions = user.items.find((i: {item: IItem}) => i.item.name === 'Love Potion')
-              const potionCount = (userPotions?.count ?? 0) + count
-              console.log(potionCount)
+              const userPotions = user.items.find(
+                (i: { item: IItem }) => i.item.name === 'Love Potion'
+              );
+              const potionCount = (userPotions?.count ?? 0) + count;
               return {
                 ...oldData,
-                items: [...oldData.items.filter(i => i.item.name !== 'Love Potion'), {item: userPotions?.item ?? lovePotion, count: potionCount }
-                 ],
+                items: [
+                  ...oldData.items.filter(i => i.item.name !== 'Love Potion'),
+                  { item: userPotions?.item ?? lovePotion, count: potionCount },
+                ],
               };
             }
           )
@@ -79,11 +80,11 @@ export const pokemonEndpoint = createApi({
         }
       },
     }),
-
-
-
   }),
 });
 
-export const { useGetLastedPokemonForSaleQuery, useGetPokemonQuery, useClaimLovePotionMutation } =
-  pokemonEndpoint;
+export const {
+  useGetLastedPokemonForSaleQuery,
+  useGetPokemonQuery,
+  useClaimLovePotionMutation,
+} = pokemonEndpoint;

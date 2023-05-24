@@ -1,4 +1,4 @@
-import PokemonCard from '@/components/CardPokemon';
+import PokemonCard from '@/components/CardPokemon/CardPokemon';
 import { IPokemon } from '@/types/pokemon';
 
 const EvolvesArticle = ({ pokemon }: { pokemon: IPokemon }) => {

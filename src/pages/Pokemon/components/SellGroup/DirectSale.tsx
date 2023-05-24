@@ -1,11 +1,10 @@
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button, UnstyledButton } from '@mantine/core';
 import { IPokemon } from '@/types/pokemon';
-import { sellPokemon } from '@/services/sellPokemon';
 import { toast } from 'sonner';
-import useUser from '@/hooks/useUser';
 import { useSellDirectPokemonMutation } from '@/redux/api/userEndpoint';
 import { IUser } from '@/types/user';
+import { useEffect } from 'react';
 
 const getDirectPrice = (pokemon: IPokemon) => {
   const { stats, isLegendary, isMythical } = pokemon;
@@ -19,14 +18,24 @@ const getDirectPrice = (pokemon: IPokemon) => {
   return Math.floor(price);
 };
 
-function DirectSale({ pokemon, user }: { pokemon: IPokemon, user: IUser }) {
-  const [opened, { open, close }] = useDisclosure(false); 
-  const [sell] = useSellDirectPokemonMutation();
+function DirectSale({ pokemon, user }: { pokemon: IPokemon; user: IUser }) {
+  const [opened, { open, close }] = useDisclosure(false);
+  const [sell, { isLoading, isSuccess, isError }] =
+    useSellDirectPokemonMutation();
   const handleSell = () => {
-    close();
-    toast.success('Pokemon sold!');
-    sell({ pokemon, user, price: getDirectPrice(pokemon) * 2 });
+    sell({ pokemon, user, price: getDirectPrice(pokemon) });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Sell success');
+      close();
+    }
+    if (isError) {
+      toast.error('Sell fail');
+      close();
+    }
+  }, [isSuccess, isError]);
 
   return (
     <>
@@ -52,7 +61,12 @@ function DirectSale({ pokemon, user }: { pokemon: IPokemon, user: IUser }) {
           <Button onClick={close} variant='light' color='red'>
             Cancel
           </Button>
-          <Button onClick={handleSell} variant='light' color='green'>
+          <Button
+            loading={isLoading}
+            onClick={handleSell}
+            variant='light'
+            color='green'
+          >
             Accept
           </Button>
         </Group>

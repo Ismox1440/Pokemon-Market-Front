@@ -3,7 +3,7 @@ import PokemonCardLoading from '@/components/CardPokemon/Loading';
 
 const UserInfoLoader = () => {
   return (
-    <section className='sm:bg-gray-900 bg-opacity-80 sm:backdrop-blur rounded-xl sm:border-2 border-gray-700'>
+    <section className=''>
       <ScrollArea.Autosize mah={700}>
         <div className='m-11 items-center justify-center gap-2 flex flex-wrap w-fit'>
           <Avatar size='xl' className='rounded-full' />
