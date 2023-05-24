@@ -7,7 +7,7 @@ import { LoadingScreen } from '@/components';
 const UserSection = () => {
   const { data, isFetching } = useGetTopUserQuery();
   if (isFetching || !data) return <LoadingScreen />;
-  console.log(data);
+
   return (
     <div>
       <div className='mt-11 flex flex-col md:flex-row gap-6'>

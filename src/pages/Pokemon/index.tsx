@@ -16,7 +16,7 @@ const Pokemon = () => {
   const { data: pokemon, isLoading } = useGetPokemonQuery(_id ?? '');
   const { user, isLoading: loadingUser } = useUser();
   if (isLoading || loadingUser || !pokemon || !user) return <LoadingScreen />;
-  console.log(pokemon)
+
   return (
     <MainLayout>
       <div className='xl:px-20 my-11 gap-40 xl:gap-0 mx-auto flex flex-col xl:flex-row xl:justify-evenly'>

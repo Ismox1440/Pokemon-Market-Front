@@ -60,7 +60,6 @@ export const userEndpoint = createApi({
         try {
           await queryFulfilled;
         } catch (error) {
-          console.log(error);
           toast.error('Error buying item');
           pathResult.undo();
         }
@@ -297,7 +296,6 @@ export const userEndpoint = createApi({
             )
           );
         } catch (error) {
-          console.log(error);
           toast.error('Error using pokeball');
           pathUser.undo();
         }
