@@ -2,12 +2,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { MantineProvider, create } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import { Auth0Provider } from '@auth0/auth0-react';
 import './index.css';
 import './App.css';
-
-
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -21,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       cacheLocation='localstorage'
     >
       <MantineProvider
-        theme={{  
+        theme={{
           colorScheme: 'dark',
           primaryColor: 'yellow',
           colors: {
@@ -36,7 +34,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
               '#3A4254',
               '#0c0d21',
               '#01010a',
-            ]
+            ],
           },
         }}
       >
