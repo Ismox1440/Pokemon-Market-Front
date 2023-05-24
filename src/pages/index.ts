@@ -8,6 +8,6 @@ export { default as Top } from './Top';
 export { default as Gifts } from './Gifts';
 export { default as Profile } from './Profile';
 export { default as Catch } from './Catch';
+export { default as PageNotFound } from './PageNotFound';
 export * from './Pokemon/components';
 export * from './index';
-

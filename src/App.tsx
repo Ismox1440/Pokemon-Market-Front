@@ -11,6 +11,7 @@ import {
   Profile,
   Catch,
   Gifts,
+  PageNotFound,
 } from '@/pages';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <AuthMiddleware>
           <Routes>
             <Route path='/' element={<Home />}></Route>
+            <Route path='*' element={<PageNotFound />}></Route>
             <Route path='/pokedex' element={<Pokedex />}></Route>
             <Route path='/catch' element={<Catch />}></Route>
             <Route path='/dailyrewards' element={<Gifts />}></Route>
