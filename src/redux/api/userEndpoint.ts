@@ -337,7 +337,8 @@ export const userEndpoint = createApi({
     }),
 
     getUserById: builder.query({
-      query: (id: string) => `/id/${id}`
+      query: (id: string) => `/id/${id}`,
+      providesTags: ['User'], 
     })
   }),
 });
