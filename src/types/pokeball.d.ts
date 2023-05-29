@@ -1,4 +1,4 @@
-export interface IPokeball {
+export interface Pokeball {
     name: string
     image: string
     catchRate?: number

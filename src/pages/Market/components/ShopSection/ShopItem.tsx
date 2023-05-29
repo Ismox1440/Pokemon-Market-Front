@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { HoverCard, Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import BuyButton from './BuyButton';
-import { IItem } from '@/types/item';
-import { IPokeball } from '@/types/pokeball';
+import { Item } from '@/types/item';
+import { Pokeball } from '@/types/pokeball';
 import { Separator } from '@/components';
 
-interface IProps {
+interface Props {
   item: combinedInterface;
 }
-export interface combinedInterface extends IPokeball, IItem {}
+export interface combinedInterface extends Pokeball, Item {}
 
-const ShopItem = ({ item }: IProps) => {
+const ShopItem = ({ item }: Props) => {
   const { image, description, name, catchRate, price } = item;
   const [opened, { open, close }] = useDisclosure(false);
 

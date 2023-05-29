@@ -2,11 +2,11 @@ import { Indicator } from '@mantine/core';
 import { IconAlarm } from '@tabler/icons-react';
 import Coin from './Coin';
 import Item from './Item';
-import { IGiftDay,IUser } from '@/types/';
+import { GiftDay,User } from '@/types/';
 import useCountDown from '@/hooks/useCountDown';
 import { useClaimGiftMutation } from '@/redux/api/userEndpoint';
 
-const Gift = ({ gift, user }: { user: IUser; gift: IGiftDay }) => {
+const Gift = ({ gift, user }: { user: User; gift: GiftDay }) => {
   const lastGiftDate = new Date(user.lastGiftDate);
   const { timeRemaining } = useCountDown({
     targetDate: lastGiftDate,

@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import PriceImput from '../SellGroup/PriceImput';
-import { IUser } from '@/types/user';
-import { IPokemon } from '@/types/pokemon';
+import { User } from '@/types/user';
+import { Pokemon } from '@/types/pokemon';
 import { useUseItemMutation } from '@/redux/api/userEndpoint';
 import { toast } from 'sonner';
 
@@ -14,8 +14,8 @@ const LovePotion = ({
 }: {
   value: number;
   potionsCount: number;
-  user: IUser;
-  pokemon: IPokemon;
+  user: User;
+  pokemon: Pokemon;
   setValue: (value: number) => void;
 }) => {
   const [trigger] = useUseItemMutation();

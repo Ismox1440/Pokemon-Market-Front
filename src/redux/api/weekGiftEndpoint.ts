@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseURL } from '@/api/api';
-import { IGiftWeek } from '@/types/giftWeek';
+import { GiftWeek } from '@/types/giftWeek';
 
 export const giftWeekEndpoint = createApi({
   tagTypes: ['GiftWeek'],
@@ -15,11 +15,10 @@ export const giftWeekEndpoint = createApi({
     },
   }),
   endpoints: builder => ({
-    getGiftWeek: builder.query<IGiftWeek, void>({
+    getGiftWeek: builder.query<GiftWeek, void>({
       query: () => `/current`,
       providesTags: ['GiftWeek'],
     }),
- 
   }),
 });
 

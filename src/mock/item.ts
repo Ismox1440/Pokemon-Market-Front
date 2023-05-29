@@ -1,6 +1,6 @@
-import { IItem } from '@/types';
+import { Item } from '@/types';
 
-export const lovePotion: IItem = {
+export const lovePotion: Item = {
   name: 'Love Potion',
   description:
     'Small potion that can be used to increase the XP of any Pokemon by',

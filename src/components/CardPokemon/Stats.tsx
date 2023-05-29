@@ -5,13 +5,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface IProps {
+interface Props {
   attack: string | number;
   defense: string | number;
   hp: string | number;
 }
 
-const PokemonCardStats = ({ attack, defense, hp }: IProps) => {
+const PokemonCardStats = ({ attack, defense, hp }: Props) => {
   return (
     <div className='text-gray-400 mt-1 flex gap-4 items-center  tracking-wider whitespace-nowrap overflow-hidden text-xs'>
       <div>

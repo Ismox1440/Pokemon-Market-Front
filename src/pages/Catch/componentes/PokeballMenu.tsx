@@ -9,7 +9,7 @@ import {
   createStyles,
   rem,
 } from '@mantine/core';
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import Separator from '@/components/Separator';
 
 const useStyles = createStyles(theme => ({
@@ -81,13 +81,13 @@ const useStyles = createStyles(theme => ({
   },
 }));
 
-interface IProps {
-  user: IUser;
+interface Props {
+  user: User;
   trigger: Function;
   isLoading: boolean;
 }
 
-const PokeballMenu = ({ user, trigger, isLoading }: IProps) => {
+const PokeballMenu = ({ user, trigger, isLoading }: Props) => {
   const { classes } = useStyles();
   let pokeballs = user.pokeballs.map(item => {
     return {

@@ -1,9 +1,9 @@
 import CardBadge from '@/components/CardPokemon/Badge';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import { Group } from '@mantine/core';
 import DirectSale from '../SellGroup/DirectSale';
 import P2PMarketButton from '../SellGroup/P2PSale';
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import LovePotions from './LovePotionFarm';
 import SellGroup from '../SellGroup';
 
@@ -11,8 +11,8 @@ const PokemonSection = ({
   pokemon,
   user,
 }: {
-  pokemon: IPokemon;
-  user: IUser;
+  pokemon: Pokemon;
+  user: User;
 }) => {
   const { types, images, _id, name, owner } = pokemon;
   return (

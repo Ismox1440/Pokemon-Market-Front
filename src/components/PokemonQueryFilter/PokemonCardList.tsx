@@ -1,4 +1,4 @@
-import { IPokemon } from '@/types';
+import { Pokemon } from '@/types';
 import { Pagination } from '@mantine/core';
 import { CardPokemon } from '@/components';
 
@@ -33,7 +33,7 @@ const PokemonCardList = ({
   handleSelect: Function;
   pages: number;
   currentPage: number;
-  pokemons: IPokemon[];
+  pokemons: Pokemon[];
 }) => {
   return (
     <div className='rounded-xl'>

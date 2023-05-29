@@ -1,7 +1,7 @@
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { useMantineTheme } from '@mantine/core';
-import { IPokemon } from '@/types';
+import { Pokemon } from '@/types';
 import PokemonCard from '@/components/CardPokemon/CardPokemon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ function PokemonCarousel({
   pokemons,
   loading,
 }: {
-  pokemons: IPokemon[];
+  pokemons: Pokemon[];
   loading: boolean;
 }) {
   const theme = useMantineTheme();

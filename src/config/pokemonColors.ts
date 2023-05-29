@@ -1,4 +1,4 @@
-export const typeColors: ITypeColors = {
+export const typeColors: TypeColors = {
   normal: '[#A8A878]',
   fire: '[#F08030]',
   water: '[#6890F0]',
@@ -19,7 +19,7 @@ export const typeColors: ITypeColors = {
   fairy: '[#EE99AC]',
 };
 
-export const bgColors: ITypeColors = {
+export const bgColors: TypeColors = {
   normal: 'to-[#a8a87880]',
   fire: 'to-[#f080304d]',
   water: 'to-[#6890f01a]',
@@ -39,7 +39,7 @@ export const bgColors: ITypeColors = {
   steel: 'to-[#B8B8D01a]',
   fairy: 'to-[#EE99AC1a]',
 }
-export const textColors: ITypeColors = {
+export const textColors: TypeColors = {
   normal: 'text-[#A8A878]',
   fire: 'text-[#F08030]',
   water: 'text-[#6890F0]',
@@ -60,6 +60,6 @@ export const textColors: ITypeColors = {
   fairy: 'text-[#EE99AC]',
 }
 
-interface ITypeColors {
+interface TypeColors {
   [key: string]: string;
 }

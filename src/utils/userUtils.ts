@@ -1,6 +1,6 @@
-import { IUser, IUserItem, IUserPokeball, IItem, IPokeball } from '@/types';
+import { User, UserItem, UserPokeball, Item, Pokeball } from '@/types';
 
-export const getPokeballsLength = (pokeballsArr: IUserPokeball[]) => {
+export const getPokeballsLength = (pokeballsArr: UserPokeball[]) => {
   let total = 0;
   pokeballsArr.forEach(item => {
     total += item.count;
@@ -19,38 +19,38 @@ export const shortenQuantity = (quantity: number) => {
 };
 
 export const addItem = (
-  item: IItem | IPokeball,
-  user: IUser,
+  item: Item | Pokeball,
+  user: User,
   count: number
-): { items: IUserItem[] } | { pokeballs: IUserPokeball[] } => {
-  let userItem: IUserItem | IUserPokeball | undefined;
+): { items: UserItem[] } | { pokeballs: UserPokeball[] } => {
+  let userItem: UserItem | UserPokeball | undefined;
   if (item.name.toLowerCase().includes('ball')) {
     userItem = user.pokeballs.find(
       userItem => userItem.pokeball._id === item._id
     );
     if (!userItem) {
       return { pokeballs: [...user.pokeballs, { pokeball: item, count }] } as {
-        pokeballs: IUserPokeball[];
+        pokeballs: UserPokeball[];
       };
     }
     const newArr = user.pokeballs.filter(p => p !== userItem);
     return {
       pokeballs: [
         ...newArr,
-        { count: userItem.count + count, pokeball: item } as IUserPokeball,
+        { count: userItem.count + count, pokeball: item } as UserPokeball,
       ],
     };
   }
   userItem = user.items.find(userItem => userItem.item._id === item._id);
   if (!userItem) {
     return { items: [...user.items, { _id: item._id, count, item }] } as {
-      items: IUserItem[];
+      items: UserItem[];
     };
   }
-  const newArr: IUserItem[] = user.items.filter(p => p !== userItem);
+  const newArr: UserItem[] = user.items.filter(p => p !== userItem);
   return {
     items: [...newArr, { count: userItem.count + count, item }],
-  } as { items: IUserItem[] };
+  } as { items: UserItem[] };
 };
 
 export const convertHours = (hours: number) => {

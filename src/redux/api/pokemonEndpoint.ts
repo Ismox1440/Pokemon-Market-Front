@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseURL } from '@/api/api';
 import { toast } from 'sonner';
 import { userEndpoint } from './userEndpoint';
-import { IItem, IPokemon } from '@/types';
+import { Item, Pokemon, UserItem } from '@/types';
 import { lovePotion } from '@/mock/item';
 
 export const pokemonEndpoint = createApi({
@@ -18,11 +18,11 @@ export const pokemonEndpoint = createApi({
     },
   }),
   endpoints: builder => ({
-    getLastedPokemonForSale: builder.query<IPokemon[], void>({
+    getLastedPokemonForSale: builder.query<Pokemon[], void>({
       query: () => `/lastedpokemonsforsale`,
       providesTags: ['LastedPokemonsForSale'],
     }),
-    getPokemon: builder.query<IPokemon, string>({
+    getPokemon: builder.query<Pokemon, string>({
       query: id => `/id/${id}`,
       providesTags: ['Pokemon'],
     }),
@@ -57,13 +57,13 @@ export const pokemonEndpoint = createApi({
             { email: user.email },
             oldData => {
               const userPotions = user.items.find(
-                (i: { item: IItem }) => i.item.name === 'Love Potion'
+                (i: { item: Item }) => i.item.name === 'Love Potion'
               );
               const potionCount = (userPotions?.count ?? 0) + count;
               return {
                 ...oldData,
                 items: [
-                  ...oldData.items.filter(i => i.item.name !== 'Love Potion'),
+                  ...oldData.items.filter((i: UserItem) => i.item.name !== 'Love Potion'),
                   { item: userPotions?.item ?? lovePotion, count: potionCount },
                 ],
               };

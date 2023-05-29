@@ -1,10 +1,10 @@
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import { getPokeballsLength, shortenQuantity } from '@/utils/userUtils';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Avatar, Tooltip } from '@mantine/core';
 
-const Header = ({ user, isFetching }: { user: IUser; isFetching: boolean }) => {
+const Header = ({ user, isFetching }: { user: User; isFetching: boolean }) => {
   const { username, image, coins } = user;
   return (
     <div

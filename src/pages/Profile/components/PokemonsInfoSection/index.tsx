@@ -2,14 +2,14 @@ import PokemonCardStats from '@/components/CardPokemon/Stats';
 import { Container, Grid, SimpleGrid } from '@mantine/core';
 import PokemonRaritiesProgress from '../PokemonRaritiesProgress';
 import PokemonCarousel from '../PokemonCarousel';
-import { IPokemon } from '@/types';
+import { Pokemon } from '@/types';
 import { Link } from 'react-router-dom';
 
 const PokemonsInfoSection = ({
   data,
   info,
 }: {
-  data: IPokemon[];
+  data: Pokemon[];
   info: { [key: string]: number };
 }) => {
   return (

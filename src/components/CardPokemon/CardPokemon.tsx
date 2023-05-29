@@ -1,5 +1,5 @@
 import { bgColors } from '@/config/pokemonColors';
-import { IPokemon } from '@/types';
+import { Pokemon } from '@/types';
 import PokemonCardStats from './Stats';
 import CardBadge from './Badge';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const PokemonCard = ({
   classNames,
 }: {
   classNames?: string;
-  pokemon: IPokemon;
+  pokemon: Pokemon;
 }) => {
   const { types, images, name, stats } = pokemon;
   return (

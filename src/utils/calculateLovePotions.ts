@@ -1,6 +1,6 @@
-import { IPokemon } from '../types/pokemon';
+import { Pokemon } from '../types/pokemon';
 
-export const calculateLovePotionsToClaim = (pokemon: IPokemon) => {
+export const calculateLovePotionsToClaim = (pokemon: Pokemon) => {
   const { attack, defense, speed } = pokemon.stats;
   const now = new Date();
   const lastClaim = new Date(pokemon.lastLovePotion);

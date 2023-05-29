@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseURL } from '@/api/api';
-import { IItem } from '@/types/item';
-import { IPokeball } from '@/types/pokeball';
+import { Item } from '@/types/item';
+import { Pokeball } from '@/types/pokeball';
 
-interface IShop {
-    items: IItem[]
-    pokeballs: IPokeball[]
+interface Shop {
+    items: Item[]
+    pokeballs: Pokeball[]
 }
 
 export const itemEndpoint = createApi({
@@ -20,7 +20,7 @@ export const itemEndpoint = createApi({
     },
   }),
   endpoints: builder => ({
-    getShop: builder.query<IShop, void>({
+    getShop: builder.query<Shop, void>({
       query: () => '/shop',
     }),
   }),

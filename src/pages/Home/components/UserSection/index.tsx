@@ -1,5 +1,5 @@
 import PokemonCard from '@/components/CardPokemon/CardPokemon';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import UserInfoLoader from './Loading';
 import Header from './Header';
 import { ScrollArea } from '@mantine/core';
@@ -20,7 +20,7 @@ const UserInfoSection = () => {
             Last obtained Pokemons
           </h3>
           <div className='flex flex-wrap gap-2 items-center justify-center'>
-            {user.pokemons.slice(-2).map((pokemon: IPokemon) => (
+            {user.pokemons.slice(-2).map((pokemon: Pokemon) => (
               <PokemonCard key={pokemon._id} pokemon={pokemon} />
             ))}
           </div>

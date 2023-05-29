@@ -3,7 +3,7 @@ import { baseURL } from '@/api/api';
 import { toast } from 'sonner';
 import { addItem } from '@/utils/userUtils';
 import { pokemonEndpoint } from './pokemonEndpoint';
-import { IPokemon, IStats, IItem, IUser } from '@/types';
+import { Pokemon, Stats, Item, User } from '@/types';
 
 export const userEndpoint = createApi({
   tagTypes: ['User', 'Top'],
@@ -18,7 +18,7 @@ export const userEndpoint = createApi({
     },
   }),
   endpoints: builder => ({
-    getUser: builder.query<IUser, { email?: string }>({
+    getUser: builder.query<User, { email?: string }>({
       query: ({ email }) => {
         if (!email) throw new Error('Email are required');
         return `/getuser/${email}`;
@@ -29,8 +29,8 @@ export const userEndpoint = createApi({
     buyItem: builder.mutation<
       void,
       {
-        user: IUser;
-        item: IItem;
+        user: User;
+        item: Item;
         itemType: 'pokeball' | 'item';
         count: number;
       }
@@ -76,7 +76,10 @@ export const userEndpoint = createApi({
       invalidatesTags: ['User'],
     }),
 
-    useItem: builder.mutation<void,{ user: IUser; item: IItem; pokemon: IPokemon; count: number }>({
+    useItem: builder.mutation<
+      void,
+      { user: User; item: Item; pokemon: Pokemon; count: number }
+    >({
       query: ({ user, item, count, pokemon }) => ({
         url: `/useitem`,
         method: 'PUT',
@@ -97,7 +100,7 @@ export const userEndpoint = createApi({
             { email: user.email },
             oldData => {
               const userPotions = user.items.find(
-                (i: { item: IItem }) => i.item.name === 'Love Potion'
+                (i: { item: Item }) => i.item.name === 'Love Potion'
               );
               if (!userPotions) return;
               return {
@@ -329,7 +332,7 @@ export const userEndpoint = createApi({
     }),
 
     getTopUser: builder.query<
-      { topCoins: IUser[]; topStats: { totalStats: number; user: IUser }[] },
+      { topCoins: User[]; topStats: { totalStats: number; user: User }[] },
       void
     >({
       query: () => `/top`,
@@ -338,8 +341,8 @@ export const userEndpoint = createApi({
 
     getUserById: builder.query({
       query: (id: string) => `/id/${id}`,
-      providesTags: ['User'], 
-    })
+      providesTags: ['User'],
+    }),
   }),
 });
 
@@ -355,10 +358,10 @@ export const {
   useUsePokeballMutation,
   useClaimGiftMutation,
   useGetTopUserQuery,
-  useGetUserByIdQuery
+  useGetUserByIdQuery,
 } = userEndpoint;
 
-const upgradePokemon = (pokemon: IPokemon, potionCount: number) => {
+const upgradePokemon = (pokemon: Pokemon, potionCount: number) => {
   let expLevel = { exp: 0, level: 0 };
   let newStats = { ...pokemon.stats };
   const expToNextLevel = pokemon.growthRate.levels[pokemon.level].experience;
@@ -367,17 +370,17 @@ const upgradePokemon = (pokemon: IPokemon, potionCount: number) => {
   const newExp = pokemon.exp + 50 * potionCount;
   if (newExp >= expToNextLevel) {
     let newLevel = pokemon.growthRate.levels
-      .filter(e => e.experience <= newExp)
+      .filter((e: { experience: number }) => e.experience <= newExp)
       .slice(-1)[0].level;
     expLevel = { exp: newExp, level: newLevel };
     const modificador = pokemon.isMythical ? 5 : pokemon.isLegendary ? 2 : 1;
     Object.keys(pokemon.stats).forEach(stat => {
-      const baseStat = pokemon.stats[stat as keyof IStats];
+      const baseStat = pokemon.stats[stat as keyof Stats];
       const newStat =
         Math.floor(
           (((2 * baseStat + 31 + 252 / 4) * newLevel) / 100 + 5) * modificador
-        ) + pokemon.baseStats[stat as keyof IStats];
-      newStats[stat as keyof IStats] = newStat;
+        ) + pokemon.baseStats[stat as keyof Stats];
+      newStats[stat as keyof Stats] = newStat;
     });
   } else expLevel = { exp: newExp, level: pokemon.level };
   return { ...expLevel, stats: newStats };

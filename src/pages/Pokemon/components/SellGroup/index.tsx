@@ -1,14 +1,14 @@
 import { Group } from '@mantine/core';
 import DirectSale from './DirectSale';
 import P2PMarketButton from './P2PSale';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import useUser from '@/hooks/useUser';
 
 const SellGroup = ({
   pokemon,
   userId,
 }: {
-  pokemon: IPokemon;
+  pokemon: Pokemon;
   userId: string;
 }) => {
   const { user } = useUser();

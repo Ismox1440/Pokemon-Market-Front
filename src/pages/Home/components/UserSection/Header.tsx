@@ -1,10 +1,10 @@
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import { getPokeballsLength } from '@/utils/userUtils';
 import { Avatar } from '@mantine/core';
 import CoinBadge from './CoinBadge';
 import PokeballBadge from './PokeballBadge';
 
-const Header = ({ user }: { user: IUser }) => {
+const Header = ({ user }: { user: User }) => {
   return (
     <div className='m-11 items-center justify-center gap-2 flex flex-wrap w-fit'>
       <Avatar size='xl' src={user.image} className='rounded-full' />

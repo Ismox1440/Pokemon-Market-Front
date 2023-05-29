@@ -1,19 +1,19 @@
-import { IItem } from './item';
-import { IPokeball } from './pokeball';
+import { Item } from './item';
+import { Pokeball } from './pokeball';
 
-export interface IGiftWeek {
-  days: IGiftDay[];
+export interface GiftWeek {
+  days: GiftDay[];
 }
 
-export interface IGiftDay {
+export interface GiftDay {
   day: number;
   coins: number;
-  gifts: IGift[];
+  gifts: Gift[];
 }
 
-export interface IGift {
+export interface Gift {
   count: number;
-  giftItem: IPokeball | IItem;
+  giftItem: Pokeball | Item;
   giftItemRef: string;
   _id: string;
 }

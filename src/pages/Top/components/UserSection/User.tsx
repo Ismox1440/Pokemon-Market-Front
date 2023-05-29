@@ -1,4 +1,4 @@
-import { IUser } from '@/types';
+import { User } from '@/types';
 import { shortenQuantity } from '@/utils/userUtils';
 import { faBolt, faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,7 @@ const useStyles = createStyles(theme => ({
 }));
 
 interface UserButtonProps extends UnstyledButtonProps {
-  user: IUser;
+  user: User;
   index: number;
   stats?: number;
 }

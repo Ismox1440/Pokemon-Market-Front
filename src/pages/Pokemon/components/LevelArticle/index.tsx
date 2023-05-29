@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import { Progress } from '@mantine/core';
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 
 import LovePotion from './LovePotion';
 
@@ -9,8 +9,8 @@ const LevelArticle = ({
   pokemon,
   user,
 }: {
-  pokemon: IPokemon;
-  user: IUser;
+  pokemon: Pokemon;
+  user: User;
 }) => {
   const [value, setValue] = useState(0);
   const userPotions = user.items.find(item => item.item.name === 'Love Potion');
@@ -19,7 +19,7 @@ const LevelArticle = ({
   const nextLevel =
     value > 0
       ? pokemon?.growthRate.levels
-          .filter(e => e.experience <= pokemon.exp + value * 50)
+          .filter((e: {experience: number}) => e.experience <= pokemon.exp + value * 50)
           .slice(-1)[0].level - pokemon.level
       : 0;
 

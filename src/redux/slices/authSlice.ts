@@ -3,11 +3,11 @@ import { RootState } from '../store';
 
 export interface AuthSlice {
   accessToken: string | undefined;
-  user: IUserAuth0 | undefined;
+  user: UserAuth0 | undefined;
   error: string | undefined;
 }
 
-export interface IUserAuth0 {
+export interface UserAuth0 {
   nickname: string;
   email: string;
   picture: string;

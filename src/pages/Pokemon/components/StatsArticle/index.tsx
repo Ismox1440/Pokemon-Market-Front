@@ -7,7 +7,7 @@ import {
   faShieldVirus,
 } from '@fortawesome/free-solid-svg-icons';
 import Stat from './Stat';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import Separator from '@/components/Separator';
 
 const getCreationDate = (date: Date) => {
@@ -33,7 +33,7 @@ const TypeBadge = ({ type }: { type: string }) => (
   </div>
 );
 
-const StatsArticle = ({ pokemon }: { pokemon: IPokemon }) => {
+const StatsArticle = ({ pokemon }: { pokemon: Pokemon }) => {
   const { stats, baseExperience, captureRate, createdDate } = pokemon;
   return (
     <div className='bg-secondary rounded p-8 mt-6'>

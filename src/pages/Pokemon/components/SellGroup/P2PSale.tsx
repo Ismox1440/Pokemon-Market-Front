@@ -4,15 +4,15 @@ import PriceImput from './PriceImput';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { useSellP2PPokemonMutation } from '@/redux/api/userEndpoint';
-import { IPokemon } from '@/types/pokemon';
-import { IUser } from '@/types/user';
+import { Pokemon } from '@/types/pokemon';
+import { User } from '@/types/user';
 
 function P2PMarketButton({
   pokemon,
   user,
 }: {
-  pokemon: IPokemon;
-  user: IUser;
+  pokemon: Pokemon;
+  user: User;
 }) {
   const [opened, { open, close }] = useDisclosure(false);
   const [sell] = useSellP2PPokemonMutation();

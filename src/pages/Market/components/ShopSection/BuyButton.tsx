@@ -1,7 +1,7 @@
 import useUser from '@/hooks/useUser';
 import PriceImput from '@/pages/Pokemon/components/SellGroup/PriceImput';
 import { useBuyItemMutation } from '@/redux/api/userEndpoint';
-import { IItem } from '@/types/item';
+import { Item } from '@/types/item';
 import { shortenQuantity } from '@/utils/userUtils';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ const BuyButton = ({
   item,
 }: {
   itemType: 'pokeball' | 'item';
-  item: IItem;
+  item: Item;
 }) => {
   const { price } = item;
   const [value, setValue] = useState(1);

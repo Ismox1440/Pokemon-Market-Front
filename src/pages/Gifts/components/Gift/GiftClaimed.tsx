@@ -2,9 +2,9 @@ import { Indicator } from '@mantine/core';
 import { IconLockOpen } from '@tabler/icons-react';
 import Item from './Item';
 import Coin from './Coin';
-import { IGift, IGiftDay } from '@/types';
+import { Gift, GiftDay } from '@/types';
 
-const GiftClaimed = ({ gift }: { gift: IGiftDay }) => {
+const GiftClaimed = ({ gift }: { gift: GiftDay }) => {
   return (
     <Indicator
       processing
@@ -28,7 +28,7 @@ const GiftClaimed = ({ gift }: { gift: IGiftDay }) => {
       <div className='flex flex-col sm:flex-row items-center justify-center h-full'>
         <div className='flex gap-2'>
           {gift.coins > 0 && <Coin />}
-          {gift.gifts.map((g: IGift) => (
+          {gift.gifts.map((g: Gift) => (
             <Item itemImage={g.giftItem.image} />
           ))}
         </div>

@@ -1,5 +1,5 @@
 import { useUpdateUserMutation } from '@/redux/api/userEndpoint';
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import {
   ActionIcon,
   Button,
@@ -18,7 +18,7 @@ import {
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-const EditProfile = ({ user }: { user: IUser }) => {
+const EditProfile = ({ user }: { user: User }) => {
   const imageUrlRegex = /^(https?:\/\/)?\S+?\.(jpg|jpeg|png|gif)$/;
   const [opened, { open, close }] = useDisclosure(false);
   const [update, { isLoading, isError, isSuccess }] = useUpdateUserMutation();

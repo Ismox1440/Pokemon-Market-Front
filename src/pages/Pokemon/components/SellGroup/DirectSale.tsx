@@ -1,12 +1,12 @@
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button, UnstyledButton } from '@mantine/core';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import { toast } from 'sonner';
 import { useSellDirectPokemonMutation } from '@/redux/api/userEndpoint';
-import { IUser } from '@/types/user';
+import { User } from '@/types/user';
 import { useEffect } from 'react';
 
-const getDirectPrice = (pokemon: IPokemon) => {
+const getDirectPrice = (pokemon: Pokemon) => {
   const { stats, isLegendary, isMythical } = pokemon;
   let price = 0;
   for (let stat in stats) {
@@ -18,7 +18,7 @@ const getDirectPrice = (pokemon: IPokemon) => {
   return Math.floor(price);
 };
 
-function DirectSale({ pokemon, user }: { pokemon: IPokemon; user: IUser }) {
+function DirectSale({ pokemon, user }: { pokemon: Pokemon; user: User }) {
   const [opened, { open, close }] = useDisclosure(false);
   const [sell, { isLoading, isSuccess, isError }] =
     useSellDirectPokemonMutation();

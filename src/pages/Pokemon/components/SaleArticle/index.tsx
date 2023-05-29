@@ -1,10 +1,10 @@
 import { useBuyPokemonMutation } from '@/redux/api/userEndpoint';
-import { IUser, IPokemon } from '@/types';
+import { User, Pokemon } from '@/types';
 import { faCartShopping, faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Avatar, Button } from '@mantine/core';
 
-const SaleArticle = ({ pokemon, user }: { pokemon: IPokemon; user: IUser }) => {
+const SaleArticle = ({ pokemon, user }: { pokemon: Pokemon; user: User }) => {
   const { owner, price, onSale, name } = pokemon;
   const [buyPokemon, { isLoading }] = useBuyPokemonMutation();
   const handleBuy = async () => {

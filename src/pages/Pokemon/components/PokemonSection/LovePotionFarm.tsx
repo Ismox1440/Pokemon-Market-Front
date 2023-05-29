@@ -1,14 +1,14 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UnstyledButton } from '@mantine/core';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import { calculateLovePotionsToClaim } from '@/utils/calculateLovePotions';
 import CountDownBtn from './CountDownBtn';
 import useUser from '@/hooks/useUser';
 import { useClaimLovePotionMutation } from '@/redux/api/pokemonEndpoint';
 import { toast } from 'sonner';
 
-const LovePotions = ({ pokemon }: { pokemon: IPokemon }) => {
+const LovePotions = ({ pokemon }: { pokemon: Pokemon }) => {
   const { user } = useUser();
   const { count, isAllowed, hoursDiff, lastClaim } =
     calculateLovePotionsToClaim(pokemon);

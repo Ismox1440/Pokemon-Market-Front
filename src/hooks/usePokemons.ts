@@ -1,10 +1,6 @@
 import useSWR from 'swr';
 import { baseURL } from '../api/api';
 
-interface IProps {
-  page: number;
-}
-
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 const usePokemons = (query: string) => {

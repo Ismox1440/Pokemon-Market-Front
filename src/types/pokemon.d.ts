@@ -1,9 +1,9 @@
-import { IUser } from "./user";
+import { User } from "./user";
 
-export interface IPokemon {
+export interface Pokemon {
   baseStats: IStats
   lastLovePotion: Date
-  evolvesTo?: IPokemon[]
+  evolvesTo?: Pokemon[]
   createdDate?: Date;
   name: string;
   createdDate: Date;
@@ -21,8 +21,8 @@ export interface IPokemon {
   id: number;
   pokeApiId: number;
   price?: number;
-  varieties?: IPokemon[];
-  evolvesFrom?: IPokemon;
+  varieties?: Pokemon[];
+  evolvesFrom?: Pokemon;
   captureRate: number;
   level: number;
   exp: number;
@@ -37,10 +37,10 @@ export interface IPokemon {
   isShiny?: boolean;
   isEgg?: boolean;
   _id: string
-  owner?: IUser
+  owner?: User
 }
 
-interface IStats {
+interface Stats {
   hp: number;
   attack: number;
   defense: number;
@@ -51,7 +51,7 @@ interface IStats {
 
 type nameandurl = { name: string; url: string };
 
-interface IGrowthRate {
+interface GrowthRate {
   formula: string;
   name: string;
   id: string;

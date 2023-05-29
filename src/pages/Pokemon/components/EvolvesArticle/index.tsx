@@ -1,7 +1,7 @@
 import PokemonCard from '@/components/CardPokemon/CardPokemon';
-import { IPokemon } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 
-const EvolvesArticle = ({ pokemon }: { pokemon: IPokemon }) => {
+const EvolvesArticle = ({ pokemon }: { pokemon: Pokemon }) => {
   return (
     <div className='flex flex-wrap gap-6'>
       {pokemon.evolvesFrom && (
